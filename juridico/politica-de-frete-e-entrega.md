@@ -34,9 +34,9 @@ volume (Natal, Dia das Crianças) ou por greves e eventos climáticos.
 
 Você pode retirar seu pedido pessoalmente, **sem pagar frete**.
 
-**[PREENCHER: endereço completo]**
+**{{ENDERECO}}**
 Porto Alegre / RS
-Horário: [PREENCHER: dias e horários]
+Horário: {{HORARIO_LOJA}}
 
 Avisamos por WhatsApp ou e-mail quando o pedido estiver separado, normalmente
 no mesmo dia útil. Leve um documento com foto e o número do pedido.
@@ -50,7 +50,7 @@ combinarmos.
 ## 4. Frete grátis
 
 **Frete grátis para todo o Rio Grande do Sul em compras acima de
-R$ [PREENCHER: 249,00]**, na modalidade PAC.
+R$ {{FRETE_GRATIS_VALOR}}**, na modalidade PAC.
 
 Se quiser receber mais rápido, você pode escolher SEDEX e pagar apenas a
 diferença.
@@ -103,7 +103,7 @@ Você não paga por pedido que não chegou.
 
 ---
 
-**Dúvidas sobre sua entrega?** WhatsApp **[PREENCHER: número]**, de
-[PREENCHER: dias e horários].
+**Dúvidas sobre sua entrega?** WhatsApp **{{WHATSAPP}}**, de
+{{HORARIO_ATENDIMENTO}}.
 
-*Última atualização: [PREENCHER: data]*
+*Última atualização: {{DATA_ATUALIZACAO}}*

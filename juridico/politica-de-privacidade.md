@@ -8,10 +8,10 @@ coletamos, por que coletamos e o que você pode fazer a respeito, conforme a
 
 ## 1. Quem somos
 
-**Razão social:** [PREENCHER]
-**CNPJ:** [PREENCHER]
-**Endereço:** [PREENCHER], Porto Alegre / RS
-**E-mail para assuntos de privacidade:** [PREENCHER]
+**Razão social:** {{RAZAO_SOCIAL}}
+**CNPJ:** {{CNPJ}}
+**Endereço:** {{ENDERECO}}, Porto Alegre / RS
+**E-mail para assuntos de privacidade:** {{EMAIL_PRIVACIDADE}}
 
 ## 2. Dados que coletamos
 
@@ -92,7 +92,7 @@ Pela LGPD, você pode a qualquer momento:
 - **Se opor** a um tratamento que considere indevido
 - **Ser informado** sobre com quem compartilhamos
 
-Para exercer qualquer um deles, escreva para **[PREENCHER: e-mail]**.
+Para exercer qualquer um deles, escreva para **{{EMAIL_PRIVACIDADE}}**.
 Respondemos em até **15 dias**.
 
 > Alguns dados não podem ser excluídos mesmo a pedido — notas fiscais, por
@@ -137,6 +137,6 @@ atualizada. Mudanças relevantes são comunicadas por e-mail a quem tem cadastro
 
 ---
 
-**Encarregado de dados (DPO):** [PREENCHER: nome e e-mail]
+**Encarregado de dados (DPO):** {{DPO}}
 
-*Última atualização: [PREENCHER: data]*
+*Última atualização: {{DATA_ATUALIZACAO}}*

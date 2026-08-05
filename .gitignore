@@ -1,0 +1,5 @@
+# Documentos jurídicos gerados por juridico/preencher.py.
+# A fonte da verdade é dados-da-loja.conf + os modelos.
+juridico/publicar/
+
+.DS_Store

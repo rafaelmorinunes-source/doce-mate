@@ -35,9 +35,9 @@ retorno por conta do cliente.
 
 Você também pode trocar presencialmente, sem custo nenhum e na hora:
 
-**[PREENCHER: endereço completo da loja]**
+**{{ENDERECO}}**
 Porto Alegre / RS
-Horário: [PREENCHER: dias e horários de funcionamento]
+Horário: {{HORARIO_LOJA}}
 
 Leve a peça com etiqueta e o número do pedido.
 
@@ -57,8 +57,8 @@ Envie fotos do problema junto com a solicitação — resolvemos mais rápido.
 
 ## 4. Como solicitar
 
-1. Entre em contato pelo WhatsApp **[PREENCHER: número]** ou pelo e-mail
-   **[PREENCHER: e-mail]**, informando o número do pedido e o motivo
+1. Entre em contato pelo WhatsApp **{{WHATSAPP}}** ou pelo e-mail
+   **{{EMAIL}}**, informando o número do pedido e o motivo
 2. Nossa equipe responde em até **2 dias úteis** com as instruções e, quando o
    frete for por nossa conta, o código de postagem
 3. Poste a peça na agência dos Correios
@@ -92,7 +92,7 @@ não tira direito de troca.
 
 ---
 
-**Dúvidas?** Fale com a gente pelo WhatsApp **[PREENCHER: número]**. A gente
-responde de [PREENCHER: dias] das [PREENCHER: horário].
+**Dúvidas?** Fale com a gente pelo WhatsApp **{{WHATSAPP}}**. A gente
+responde {{HORARIO_ATENDIMENTO}}.
 
-*Última atualização: [PREENCHER: data]*
+*Última atualização: {{DATA_ATUALIZACAO}}*

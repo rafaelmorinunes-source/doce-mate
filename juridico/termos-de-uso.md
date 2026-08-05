@@ -1,6 +1,6 @@
 # Termos de Uso
 
-Ao navegar e comprar em [PREENCHER: www.docemate.com.br], você concorda com
+Ao navegar e comprar em {{SITE}}, você concorda com
 estes termos. Leia com atenção.
 
 ---
@@ -9,13 +9,13 @@ estes termos. Leia com atenção.
 
 Conforme o **Decreto 7.962/2013**:
 
-**Razão social:** [PREENCHER]
+**Razão social:** {{RAZAO_SOCIAL}}
 **Nome fantasia:** Doce Mate
-**CNPJ:** [PREENCHER]
-**Endereço:** [PREENCHER], Porto Alegre / RS, CEP [PREENCHER]
-**E-mail:** [PREENCHER]
-**WhatsApp:** [PREENCHER]
-**Atendimento:** [PREENCHER: dias e horários]
+**CNPJ:** {{CNPJ}}
+**Endereço:** {{ENDERECO}}, Porto Alegre / RS, CEP {{CEP}}
+**E-mail:** {{EMAIL}}
+**WhatsApp:** {{WHATSAPP}}
+**Atendimento:** {{HORARIO_ATENDIMENTO}}
 
 ## 2. Objeto
 
@@ -65,7 +65,7 @@ você imediatamente.
 6. Recebe o código de rastreio
 
 A compra só se conclui com a **confirmação do pagamento**. Pedido não pago é
-cancelado automaticamente após [PREENCHER: 3] dias.
+cancelado automaticamente após {{PRAZO_CANCELA_BOLETO}} dias.
 
 ## 6. Disponibilidade de estoque
 
@@ -146,8 +146,8 @@ O tratamento de dados pessoais está descrito na
 
 Para dúvidas, reclamações ou solicitações:
 
-- **WhatsApp:** [PREENCHER]
-- **E-mail:** [PREENCHER]
+- **WhatsApp:** {{WHATSAPP}}
+- **E-mail:** {{EMAIL}}
 - **Presencialmente:** na loja física, no endereço acima
 
 Respondemos em até **5 dias úteis**, conforme exige o Decreto 7.962/2013.
@@ -166,4 +166,4 @@ foro de seu domicílio, conforme o CDC.
 
 ---
 
-*Última atualização: [PREENCHER: data]*
+*Última atualização: {{DATA_ATUALIZACAO}}*
