@@ -49,6 +49,25 @@ inteiro**.
 
 ---
 
+## 5.2b Apagar os produtos de teste
+
+Se você importou as peças fictícias de `produtos/teste/`, elas **precisam
+sumir** antes de abrir a loja.
+
+- [ ] **Produtos → Todos os produtos**, filtrar pela categoria **TESTE**,
+      marcar todos, mover para a lixeira
+- [ ] Abrir a aba **Lixeira** e **esvaziar** — produto na lixeira ainda
+      ocupa o SKU
+- [ ] Apagar a categoria **TESTE** em **Produtos → Categorias**
+- [ ] Buscar `TESTE` na busca de produtos do painel: o resultado tem que vir
+      **vazio**
+
+Peça fictícia visível numa loja aberta destrói confiança mais rápido que
+qualquer outro erro — e passa despercebida justamente por você já estar
+acostumado a vê-la.
+
+---
+
 ## 5.3 Técnico
 
 - [ ] Cadeado (HTTPS) aparecendo em todas as páginas
