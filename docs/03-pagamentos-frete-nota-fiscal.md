@@ -13,26 +13,36 @@ precisa ser trocado antes de configurar qualquer outra coisa.
 
 ### O problema
 
-O plugin **Brazilian Market on WooCommerce** — que adiciona CPF, CNPJ, bairro
-e máscara de CEP — **não funciona no checkout em blocos**. Sem ele, o checkout
-do WooCommerce é americano: não tem campo de CPF e não tem bairro.
+O checkout padrão do WooCommerce é americano: **não tem campo de CPF e não tem
+bairro**. Isso não é questão de estética — sem CPF você **não consegue emitir
+nota fiscal**, e sem bairro o endereço sai incompleto para a transportadora.
+São dois bloqueios legais e operacionais.
 
-Isso não é questão de estética. Sem CPF você **não consegue emitir nota
-fiscal**, e sem bairro o endereço sai incompleto para a transportadora. São
-dois bloqueios legais e operacionais, não inconveniências.
+Quem resolve é o plugin de campos brasileiros, e **qual plugin você escolhe
+determina se pode usar o checkout em blocos**.
 
-### O trade-off, honestamente
+### Depende do plugin de campos
 
-O checkout em blocos é mais moderno e há relatos de conversão melhor. A
-contrapartida é que boa parte do ecossistema brasileiro — campos fiscais,
-integrações de frete, emissores de NF-e — ainda assume o checkout clássico.
+| Plugin | Checkout em blocos |
+|--------|--------------------|
+| Brazilian Market on WooCommerce | **Não funciona** — e está sem manutenção |
+| Calculadora de Frete e Campos Checkout para o Brasil | Funciona nos dois |
 
-Para uma loja fazendo as primeiras vendas, **quebrar a emissão de nota para
-perseguir conversão é troca ruim**. Comece no clássico. Dá para migrar depois,
-quando os plugins brasileiros tiverem acompanhado.
+O **Mercado Pago** funciona nos dois modos. Quem força a decisão é sempre o
+plugin de campos, nunca o de pagamento.
 
-> O Mercado Pago funciona nos dois. Quem força a decisão é o plugin de campos
-> brasileiros, não o de pagamento.
+### A recomendação
+
+Use o plugin da **Link Nacional** (ver [doc 02](02-setup-hostinger-woocommerce.md#28-plugins-essenciais))
+e **comece no checkout clássico mesmo assim**.
+
+Não por incompatibilidade — ele suporta blocos —, mas porque o resto do
+ecossistema brasileiro de frete e NF-e ainda foi escrito assumindo o clássico,
+e porque **trocar de checkout obriga a refazer todos os testes**. Faça as
+primeiras vendas no que já validou.
+
+Depois do lançamento, com a operação rodando, vale experimentar o de blocos
+num momento calmo. Aí o custo de errar é só seu tempo, não um pedido perdido.
 
 ### Como trocar
 

@@ -188,17 +188,33 @@ Instale **apenas estes** por enquanto:
 | WooCommerce | A loja |
 | Mercado Pago para WooCommerce | PIX, cartão e boleto — ver [doc 03](03-pagamentos-frete-nota-fiscal.md) |
 | Melhor Envio | Cálculo e etiqueta de frete — ver [doc 03](03-pagamentos-frete-nota-fiscal.md) |
-| Brazilian Market on WooCommerce | Adiciona CPF/CNPJ, bairro e CEP com máscara no checkout |
+| Calculadora de Frete e Campos Checkout para o Brasil | CPF/CNPJ, bairro e CEP preenchendo o endereço sozinho |
 | LiteSpeed Cache | Velocidade (a Hostinger usa LiteSpeed) |
 
-O **Brazilian Market on WooCommerce** é indispensável: o checkout padrão do
+O plugin de **campos brasileiros** é indispensável: o checkout padrão do
 WooCommerce é americano, sem campo de CPF e sem bairro. Sem ele, você não
 consegue emitir nota fiscal nem gerar etiqueta de frete corretamente.
 
-> **Antes de instalá-lo**, troque o checkout em blocos pelo clássico — o
-> plugin não funciona no checkout novo, que vem ligado por padrão em
-> instalações recentes. Instruções na
-> [seção 3.0](03-pagamentos-frete-nota-fiscal.md#30-antes-de-tudo-checkout-clássico-não-em-blocos).
+### Por que este e não o Brazilian Market on WooCommerce
+
+O **Brazilian Market on WooCommerce** é o mais citado em tutorial antigo, mas
+está **sem manutenção** e **não funciona no checkout em blocos**.
+
+A **Calculadora de Frete e Campos Checkout para o Brasil**, da Link Nacional,
+resolve os dois problemas num plugin só:
+
+- adiciona CPF, CNPJ e bairro
+- preenche rua, bairro e cidade a partir do CEP, consultando ViaCEP e Brasil API
+- funciona tanto no checkout clássico quanto no de blocos
+- ainda traz uma calculadora de frete para a página do produto
+
+Um plugin em vez de dois, e mantido. No plano Premium, plugin a menos é
+velocidade a mais.
+
+> ⚠️ Ele adiciona **duas** calculadoras de frete na página do produto, em
+> posições diferentes, e uma delas só aparece em produto variável. Nas
+> **Configurações** do plugin dá para deixar só uma. Faça isso antes de
+> testar o checkout, senão a página fica confusa.
 
 Cada plugin extra consome recurso do plano Premium. Resista à tentação de
 instalar "só para testar".
