@@ -9,35 +9,52 @@ Text Domain:  docemate
 */
 
 /* ==========================================================================
-   PALETA — é aqui que você mexe
+   PALETA — derivada do logo da Doce Mate
 
-   Estes valores são um ponto de partida, não a identidade da Doce Mate.
-   Troque pelos tons reais da marca (os mesmos das fotos do Instagram) e o
-   site inteiro acompanha: botões, links, preços, rodapé, tudo.
+   O logo tem três cores fortes: roxo, rosa e verde-limão. Usar as três em
+   força total na interface deixaria o site berrante e faria a loja brigar
+   com as fotos das peças.
 
-   Para pegar a cor exata de uma foto: abra a imagem no Paint ou no Preview,
-   use o conta-gotas, copie o código hexadecimal.
+   Então a paleta DERIVA do logo, não o copia:
+
+   - o roxo é a cor de ação (botões, links), escurecido para o texto branco
+     em cima dele ser legível — o roxo do logo tem contraste 4,3:1, abaixo
+     do mínimo de 4,5:1; este tem 6,1:1
+   - o rosa e o verde entram só como acento, em etiqueta e destaque
+   - os cinzas puxam levemente para o violeta, para parecerem escolhidos e
+     não genéricos
+
+   Os valores foram tirados do logo a olho. Se quiser exatidão, abra o PNG,
+   use o conta-gotas e ajuste as três primeiras linhas.
    ========================================================================== */
 
 :root {
-  /* Cor principal da marca — botões, links, destaques */
-  --dm-brand:       #C86B7D;
-  --dm-brand-dark:  #A85062;   /* hover: uns 15% mais escuro que a principal */
-  --dm-brand-soft:  #FBF0F2;   /* fundo suave: a principal bem clareada */
+  /* Roxo do logo, ajustado para ação — botões, links, destaques */
+  --dm-brand:       #71539B;
+  --dm-brand-dark:  #5B4080;   /* hover */
+  --dm-brand-soft:  #F4F0F9;   /* fundo suave, bem clareado */
+  --dm-brand-pure:  #8C6BB0;   /* o roxo do logo, para faixas e fundos */
 
-  /* Textos */
-  --dm-ink:         #2E2A2B;   /* títulos */
-  --dm-body:        #5A5153;   /* corpo */
-  --dm-muted:       #8C8285;   /* legendas, metadados */
+  /* Acentos do logo — só em pequenas doses, nunca como texto sobre branco */
+  --dm-verde:       #C6DF74;   /* verde-limão do "Mate": fundo de etiqueta */
+  --dm-verde-ink:   #5C7320;   /* versão legível, para texto */
+  --dm-rosa:        #EFA9CB;   /* rosa do "Doce": fundo suave */
+  --dm-rosa-ink:    #B0417A;   /* versão legível, para texto */
+
+  /* Textos — cinzas com viés violeta, para conversarem com o roxo */
+  --dm-ink:         #2C2733;   /* títulos */
+  --dm-body:        #56505E;   /* corpo */
+  --dm-muted:       #726B7B;   /* legendas, metadados — 4,7:1 até sobre o
+                                  fundo suave do rodapé, onde ele mais aparece */
 
   /* Fundos e linhas */
   --dm-bg:          #FFFFFF;
-  --dm-bg-soft:     #FAF7F5;
-  --dm-line:        #EAE4E3;
+  --dm-bg-soft:     #F7F5FA;
+  --dm-line:        #E7E3EC;
 
   /* Cores com significado — não mude sem motivo */
-  --dm-sale:        #C2553F;   /* etiqueta de promoção */
-  --dm-success:     #4F7360;   /* "frete grátis", "em estoque" */
+  --dm-sale:        #B0417A;   /* etiqueta de promoção: o rosa, escurecido */
+  --dm-success:     #5C7320;   /* "frete grátis", "em estoque": o verde */
 
   /* Tipografia
      Fonte do sistema: carrega instantâneo e não faz requisição externa.
@@ -97,9 +114,13 @@ textarea:focus-visible,
   padding-bottom: 1.5em;
 }
 
+/* O logo da Doce Mate é largo (a faixa roxa) e tem o bebê passando acima e
+   abaixo dela. Altura curta demais deixa "Doce" e "Mate" ilegíveis, por isso
+   96px em vez dos 76px que serviriam num logo comum.
+   Corte as margens transparentes do PNG antes de subir — ver tema/README.md. */
 .site-header .site-branding img,
 .site-header .custom-logo-link img {
-  max-height: 76px;
+  max-height: 96px;
   width: auto;
 }
 
@@ -432,7 +453,7 @@ ul.products li.product .button:hover {
 
   .site-header .site-branding img,
   .site-header .custom-logo-link img {
-    max-height: 56px;
+    max-height: 64px;
   }
 
   .woocommerce div.product .product_title { font-size: 1.5em; }

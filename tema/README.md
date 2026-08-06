@@ -21,27 +21,37 @@ não apague ele.
 > avisa quais e para — o rodapé precisa do CNPJ e do endereço, que o Decreto
 > 7.962/2013 exige em todas as páginas.
 
-## Trocar as cores
+## A paleta
 
-Tudo sai de um bloco só, no topo de `docemate/style.css`:
+Derivada do logo, num bloco só no topo de `docemate/style.css`.
 
-```css
-:root {
-  --dm-brand:       #C86B7D;   /* cor principal */
-  --dm-brand-dark:  #A85062;   /* hover */
-  --dm-brand-soft:  #FBF0F2;   /* fundo suave */
-  ...
-}
-```
+O logo tem três cores fortes — roxo, rosa e verde-limão. Usar as três em força
+total na interface deixaria o site berrante e faria a loja competir com as
+fotos das peças. Então a paleta **deriva** do logo em vez de copiá-lo:
 
-Os valores atuais são **um ponto de partida, não a identidade da Doce Mate**.
-Troque pelos tons reais da marca e o site inteiro acompanha: botões, links,
-preços, rodapé.
+| Papel | Cor | Vem de |
+|-------|-----|--------|
+| Ação (botões, links) | `#71539B` | roxo do logo, escurecido |
+| Faixas e fundos | `#8C6BB0` | o roxo do logo |
+| Etiqueta de promoção | `#B0417A` | rosa do "Doce", escurecido |
+| Frete grátis, em estoque | `#5C7320` | verde do "Mate", escurecido |
+| Acentos claros | `#EFA9CB`, `#C6DF74` | rosa e verde do logo |
 
-Para pegar a cor exata de uma foto do Instagram: abra a imagem no Paint ou no
-Preview e use o conta-gotas.
+### Por que o roxo foi escurecido
 
-Depois de editar, rode `./tema/build.sh` de novo e reenvie.
+O roxo do logo (`#8C6BB0`) tem contraste **4,3:1** contra texto branco —
+abaixo do mínimo de 4,5:1. Botão com texto ilegível não é questão de gosto:
+some para quem tem baixa visão e é lido no celular sob sol. O tom usado nos
+botões tem **6,1:1** e continua sendo claramente o roxo da marca.
+
+Os cinzas de texto puxam levemente para o violeta, para parecerem escolhidos
+em vez de genéricos.
+
+### Ajustar
+
+As cores foram tiradas do logo a olho. Para exatidão, abra o PNG, use o
+conta-gotas e ajuste as três primeiras linhas do `:root`. Depois rode
+`./tema/build.sh` de novo e reenvie.
 
 ## O que o tema faz
 
@@ -66,9 +76,25 @@ Depois de editar, rode `./tema/build.sh` de novo e reenvie.
 
 **Aparência → Personalizar → Identidade do site → Logo**.
 
-PNG com fundo transparente, cerca de 400 px de largura. O tema limita a altura
-em 76 px no computador e 56 px no celular, então um logo muito alto e estreito
-fica pequeno — prefira um horizontal.
+### Corte as margens antes de subir
+
+O arquivo do logo é quadrado, com bastante área transparente em volta. Se
+subir assim, o WordPress escala o quadrado inteiro — incluindo o vazio — e a
+faixa roxa aparece minúscula no cabeçalho.
+
+Corte deixando só o desenho: a faixa roxa, o bebê que passa por cima dela e os
+pés que passam por baixo. Fica algo perto de **1120 × 590 px**, quase 2:1.
+Qualquer editor de imagem faz isso; no Paint é "Selecionar → Recortar".
+
+Salve como **PNG com fundo transparente**. O tema limita a altura em 96 px no
+computador e 64 px no celular.
+
+### Ícone do site (favicon)
+
+Ainda em **Identidade do site**. Use a **cabeça do bebê recortada em
+quadrado** — o rosto com o chapéu. É o elemento mais reconhecível do logo e o
+único que ainda se lê a 32 px. A faixa com "Doce Mate" inteira vira um borrão
+nesse tamanho.
 
 ## Slugs que o tema procura
 
