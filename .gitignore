@@ -7,3 +7,6 @@ tema/docemate/dados-loja.php
 tema/docemate.zip
 
 .DS_Store
+
+# Pacote do plugin, gerado por plugin/build.sh
+plugin/doce-mate-ajustes.zip
