@@ -34,17 +34,26 @@ Uma peça com vários tamanhos é **um produto**, não vários.
 No CSV isso vira:
 
 - **1 linha `variable`** — o produto "pai", com foto, descrição, categoria e a
-  lista de todos os tamanhos e cores separados por `|`
+  lista de todos os tamanhos e cores **separados por vírgula**
 - **1 linha `variation` para cada combinação** — com o próprio SKU, o próprio
   estoque e o próprio preço, apontando para o pai na coluna `Parent`
 
 ```
-variable    DM-VEST-001         Tamanho: 2 | 4 | 6 | 8    Cor: Rosa | Azul
-  variation DM-VEST-001-2-RO    Tamanho: 2                Cor: Rosa    → 5 un.
-  variation DM-VEST-001-4-RO    Tamanho: 4                Cor: Rosa    → 8 un.
-  variation DM-VEST-001-2-AZ    Tamanho: 2                Cor: Azul    → 4 un.
+variable    DM-VEST-001         Tamanho: 2, 4, 6, 8    Cor: Rosa, Azul
+  variation DM-VEST-001-2-RO    Tamanho: 2             Cor: Rosa    → 5 un.
+  variation DM-VEST-001-4-RO    Tamanho: 4             Cor: Rosa    → 8 un.
+  variation DM-VEST-001-2-AZ    Tamanho: 2             Cor: Azul    → 4 un.
   ...
 ```
+
+> **O separador é vírgula, não barra vertical.** Muito tutorial na internet diz
+> `2 | 4 | 6`, mas o importador do WooCommerce separa por vírgula — está no
+> código, em `explode_values( $value, $separator = ',' )`. Com barra vertical
+> ele cria **um único** tamanho chamado `2 | 4 | 6`, nenhuma variação casa com
+> ele, e o seletor da página do produto aparece **vazio**.
+>
+> O campo inteiro precisa estar entre aspas: `"2, 4, 6, 8"`. Se algum valor
+> tiver vírgula dentro, escape com barra invertida: `"Azul\, claro, Rosa"`.
 
 A coluna `Parent` da variação recebe o **SKU do produto pai**.
 
@@ -77,7 +86,7 @@ trabalhoso demais para desfazer depois.
 | `Images` | URLs separadas por vírgula. A primeira é a principal |
 | `Parent` | Só nas variações: o SKU do produto pai |
 | `Attribute 1 name` | `Tamanho` |
-| `Attribute 1 value(s)` | No pai: `2 \| 4 \| 6 \| 8`. Na variação: só `4` |
+| `Attribute 1 value(s)` | No pai, entre aspas e separado por vírgula: `"2, 4, 6, 8"`. Na variação: só `4` |
 | `Attribute 1 visible` | `1` |
 | `Attribute 1 global` | `1` |
 | `Attribute 2 ...` | Mesma lógica, para `Cor` |
@@ -126,7 +135,7 @@ loja lenta no plano Premium.
 | Acentos viraram `Ã§` e `Ã£` | Salvou em ANSI. Exporte como **CSV UTF-8** |
 | Preço virou zero ou sumiu | Usou vírgula decimal. Use ponto: `89.90` |
 | Variação não vinculou ao pai | `Parent` não bate com o SKU do pai, ou o pai não está na mesma importação |
-| Tamanhos não aparecem no produto | Faltou o `\|` separando os valores no pai |
+| Seletor de tamanho aparece **vazio** | Os valores do pai foram separados por `\|` em vez de vírgula |
 | Frete saiu errado | Peso ou dimensões em branco |
 | Produto duplicou | Reimportou com SKU repetido sem marcar "atualizar existentes" |
 

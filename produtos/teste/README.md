@@ -40,6 +40,19 @@ Isso é útil: você vê como fica um produto sem foto e entende por que foto n�
 > Se aparecer erro de codificação nos acentos, o arquivo foi reaberto e salvo
 > em ANSI por algum editor. Reimporte a versão original do repositório.
 
+### Se você importou a versão anterior deste arquivo
+
+A primeira versão separava os tamanhos por `|` em vez de vírgula, e o
+seletor da página do produto ficava **vazio**. Antes de reimportar, limpe o
+que ficou pela metade:
+
+1. **Produtos**, filtrar pela categoria **TESTE**, mover tudo para a lixeira
+   e **esvaziar a lixeira** — SKU na lixeira bloqueia a reimportação
+2. **Produtos → Atributos → Tamanho → Configurar termos**: apague os termos
+   com cara de lista, como `2 | 4 | 6` ou `RN | P | M | G`. Faça o mesmo em
+   **Cor**
+3. Reimporte o CSV corrigido
+
 ---
 
 ## Roteiro de testes
