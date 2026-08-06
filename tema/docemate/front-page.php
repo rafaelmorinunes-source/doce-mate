@@ -41,24 +41,24 @@ get_header();
 			</p>
 		</section>
 
-		<?php // ---------- O que a loja garante ---------- ?>
+		<?php
+		// ---------- O que a loja garante ----------
+		$garantias = array(
+			array( 'sacola', 'Retirada grátis na loja', 'Experimente na hora e troque na mesma visita' ),
+			array( 'troca', 'Troca em até 30 dias', 'A primeira troca por tamanho é por nossa conta' ),
+			array( 'raio', 'PIX com desconto', 'Cartão em até 3x sem juros' ),
+			// O espaço antes de "249" é um espaço rígido: o valor não quebra linha.
+			array( 'frete', 'Frete grátis no RS', 'Em compras acima de R$ 249' ),
+		);
+		?>
 		<ul class="dm-garantias">
-			<li>
-				<strong>Retirada grátis na loja</strong>
-				Experimente na hora e troque na mesma visita
-			</li>
-			<li>
-				<strong>Troca em até 30 dias</strong>
-				A primeira troca por tamanho é por nossa conta
-			</li>
-			<li>
-				<strong>PIX com desconto</strong>
-				Cartão em até 3x sem juros
-			</li>
-			<li>
-				<strong>Frete grátis no RS</strong>
-				Em compras acima de R$&nbsp;249
-			</li>
+			<?php foreach ( $garantias as $g ) : ?>
+				<li>
+					<?php echo docemate_icone( $g[0] ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+					<strong><?php echo esc_html( $g[1] ); ?></strong>
+					<span><?php echo esc_html( $g[2] ); ?></span>
+				</li>
+			<?php endforeach; ?>
 		</ul>
 
 		<?php

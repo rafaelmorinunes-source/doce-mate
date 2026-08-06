@@ -4,7 +4,7 @@ Theme URI:    https://docemate.com.br
 Description:  Tema filho do Storefront para a Doce Mate — moda infantil, Porto Alegre/RS.
 Author:       Doce Mate
 Template:     storefront
-Version:      1.0.0
+Version:      1.1.0
 Text Domain:  docemate
 */
 
@@ -426,39 +426,61 @@ ul.products li.product .button:hover {
    ========================================================================== */
 
 .dm-home > .site-main > * + * {
-  margin-top: 4em;
+  margin-top: 5em;
 }
 
-/* Abertura */
+.dm-icone {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Abertura
+
+   Sem foto de produto, quem carrega o peso visual é a cor da marca. Faixa
+   roxa cheia com texto branco em vez de fundo pálido: dá presença à página
+   e é a única vez que o roxo aparece em força total.
+   -------------------------------------------------------------------------- */
 
 .dm-hero {
-  background-color: var(--dm-brand-soft);
-  border-radius: 8px;
-  padding: 3.5em 2em;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--dm-brand-dark);
+  background-image:
+    radial-gradient(120% 140% at 85% 0%, var(--dm-brand-pure) 0%, transparent 60%),
+    radial-gradient(100% 120% at 0% 100%, var(--dm-brand) 0%, transparent 55%);
+  color: #FFFFFF;
+  border-radius: 14px;
+  padding: 4.5em 2.5em;
   text-align: center;
 }
 
 .dm-hero__eyebrow {
-  color: var(--dm-brand);
-  font-size: 0.78em;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.76em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
 }
 
 .dm-hero__titulo {
-  font-size: 2.4em;
-  line-height: 1.15;
-  max-width: 16em;
-  margin: 0 auto 0.5em;
+  color: #FFFFFF;
+  font-size: clamp(2em, 4.4vw, 3.1em);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 15em;
+  margin: 0 auto 0.6em;
   text-wrap: balance;
 }
 
 .dm-hero__texto {
-  font-size: 1.1em;
-  max-width: 34em;
-  margin: 0 auto 2em;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.08em;
+  max-width: 32em;
+  margin: 0 auto 2.2em;
 }
 
 .dm-hero__acoes {
@@ -469,21 +491,37 @@ ul.products li.product .button:hover {
   margin: 0;
 }
 
-/* Botão secundário: vazado, para não competir com a ação principal */
+/* Ação principal: branco sobre o roxo, o maior contraste possível na faixa */
+.dm-hero .button.alt,
+.woocommerce .dm-hero a.button.alt {
+  background-color: #FFFFFF;
+  color: var(--dm-brand-dark);
+}
+
+.dm-hero .button.alt:hover,
+.woocommerce .dm-hero a.button.alt:hover {
+  background-color: rgba(255, 255, 255, 0.88);
+  color: var(--dm-brand-dark);
+}
+
+/* Ação secundária: vazada em branco */
 .woocommerce a.button.dm-botao-vazado,
 a.button.dm-botao-vazado {
   background-color: transparent;
-  color: var(--dm-brand);
-  border: 1px solid var(--dm-brand);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .woocommerce a.button.dm-botao-vazado:hover,
 a.button.dm-botao-vazado:hover {
-  background-color: var(--dm-brand);
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: #FFFFFF;
   color: #FFFFFF;
 }
 
-/* O que a loja garante */
+/* --------------------------------------------------------------------------
+   O que a loja garante
+   -------------------------------------------------------------------------- */
 
 .dm-garantias {
   list-style: none;
@@ -491,93 +529,128 @@ a.button.dm-botao-vazado:hover {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-  gap: 1px;
-  background-color: var(--dm-line);
-  border: 1px solid var(--dm-line);
-  border-radius: 6px;
-  overflow: hidden;
+  gap: 1em;
 }
 
 .dm-garantias li {
-  background-color: var(--dm-bg);
-  padding: 1.4em 1.3em;
   margin: 0;
+  padding: 1.6em 1.4em;
+  background-color: var(--dm-bg-soft);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
   font-size: 0.92em;
   line-height: 1.5;
   color: var(--dm-muted);
 }
 
+.dm-garantias .dm-icone {
+  color: var(--dm-brand);
+  margin-bottom: 0.2em;
+}
+
 .dm-garantias strong {
-  display: block;
   color: var(--dm-ink);
-  font-weight: 600;
-  margin-bottom: 0.25em;
+  font-weight: 650;
+  font-size: 1.02em;
 }
 
-/* Seções com título */
+/* --------------------------------------------------------------------------
+   Títulos de seção — alinhados à esquerda, com um filete na cor da marca
+   -------------------------------------------------------------------------- */
 
-.dm-secao__titulo,
-.dm-sobre__titulo,
-.dm-ajuda__titulo {
-  font-size: 1.6em;
-  margin-bottom: 1em;
-  text-align: center;
+.dm-secao__titulo {
+  font-size: clamp(1.45em, 2.6vw, 1.9em);
+  letter-spacing: -0.015em;
+  margin-bottom: 1.2em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--dm-line);
+  position: relative;
 }
 
-/* Categorias */
+.dm-secao__titulo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 2.5em;
+  height: 2px;
+  background-color: var(--dm-brand);
+}
+
+/* --------------------------------------------------------------------------
+   Categorias
+   -------------------------------------------------------------------------- */
 
 .dm-categorias {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 1.5em;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1.25em;
 }
 
 .dm-categoria {
   display: block;
-  text-align: center;
   text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--dm-bg);
+  border: 1px solid var(--dm-line);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.dm-categoria:hover {
+  transform: translateY(-3px);
+  border-color: var(--dm-brand);
+  box-shadow: 0 10px 24px -12px rgba(44, 39, 51, 0.35);
 }
 
 .dm-categoria__foto {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 0.7em;
-  transition: opacity 0.15s ease;
 }
 
-/* Sem foto de categoria, um bloco na cor da marca em vez de espaço em branco */
+/* Sem foto de categoria, um degradê na cor da marca em vez de espaço vazio */
 .dm-categoria__foto--vazia {
-  background-color: var(--dm-brand-soft);
-  border: 1px dashed var(--dm-line);
+  background-image: linear-gradient(140deg, var(--dm-brand-soft) 0%, var(--dm-rosa) 100%);
 }
-
-.dm-categoria:hover .dm-categoria__foto { opacity: 0.85; }
 
 .dm-categoria__nome {
+  display: block;
+  padding: 0.95em 1.1em;
   color: var(--dm-ink);
   font-weight: 600;
-  font-size: 0.98em;
+  font-size: 0.96em;
+  line-height: 1.3;
 }
 
 .dm-categoria:hover .dm-categoria__nome { color: var(--dm-brand); }
 
-/* A loja */
+/* --------------------------------------------------------------------------
+   A loja e o convite ao WhatsApp — lado a lado no computador
+   -------------------------------------------------------------------------- */
+
+.dm-sobre,
+.dm-ajuda {
+  border-radius: 14px;
+  padding: 3em 2.5em;
+}
 
 .dm-sobre {
   background-color: var(--dm-bg-soft);
-  border-radius: 8px;
-  padding: 2.75em 2em;
-  text-align: center;
 }
 
-.dm-sobre p {
-  max-width: 40em;
-  margin-left: auto;
-  margin-right: auto;
+.dm-sobre__titulo,
+.dm-ajuda__titulo {
+  font-size: clamp(1.4em, 2.4vw, 1.75em);
+  letter-spacing: -0.015em;
+  margin-bottom: 0.7em;
 }
+
+.dm-sobre p { max-width: 40em; }
+.dm-sobre p + p { margin-top: 1em; }
 
 .dm-link-seta {
   font-weight: 600;
@@ -590,21 +663,18 @@ a.button.dm-botao-vazado:hover {
   display: inline-block;
 }
 
-.dm-link-seta:hover::after { margin-left: 0.25em; }
-
-/* Dúvida de tamanho */
+.dm-link-seta:hover::after { margin-left: 0.3em; }
 
 .dm-ajuda {
-  text-align: center;
   border: 1px solid var(--dm-line);
-  border-radius: 8px;
-  padding: 2.5em 2em;
+  text-align: center;
 }
 
 .dm-ajuda p {
-  max-width: 34em;
+  max-width: 32em;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1.6em;
 }
 
 /* ==========================================================================
@@ -660,28 +730,31 @@ a.button.dm-botao-vazado:hover {
   }
 
   /* Home no celular */
-  .dm-home > .site-main > * + * { margin-top: 2.5em; }
+  .dm-home > .site-main > * + * { margin-top: 3em; }
 
   .dm-hero {
-    padding: 2.5em 1.25em;
-    border-radius: 6px;
+    padding: 3em 1.5em;
+    border-radius: 10px;
   }
 
-  .dm-hero__titulo { font-size: 1.75em; }
   .dm-hero__texto { font-size: 1em; }
 
   /* Botões empilhados e de largura cheia: alvo de toque decente */
   .dm-hero__acoes { flex-direction: column; }
   .dm-hero__acoes .button { width: 100%; }
 
-  .dm-secao__titulo,
-  .dm-sobre__titulo,
-  .dm-ajuda__titulo { font-size: 1.35em; }
+  /* Duas garantias por linha em vez de quatro cartões empilhados */
+  .dm-garantias { grid-template-columns: repeat(2, 1fr); gap: 0.75em; }
+  .dm-garantias li { padding: 1.2em 1em; font-size: 0.85em; }
 
-  .dm-categorias { grid-template-columns: repeat(2, 1fr); gap: 1em; }
+  .dm-categorias { grid-template-columns: repeat(2, 1fr); gap: 0.9em; }
 
   .dm-sobre,
-  .dm-ajuda { padding: 2em 1.25em; }
+  .dm-ajuda { padding: 2.25em 1.5em; border-radius: 10px; }
+}
+
+@media (max-width: 400px) {
+  .dm-garantias { grid-template-columns: 1fr; }
 }
 
 /* Respeita quem pediu menos animação no sistema */

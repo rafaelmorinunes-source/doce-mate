@@ -9,13 +9,20 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Carrega o CSS do tema filho depois do CSS do Storefront.
+ *
+ * A versão vem da data de modificação do arquivo, não do número do tema.
+ * Usar o número obriga a lembrar de subi-lo a cada alteração, e esquecer uma
+ * vez significa navegador e cache servindo CSS velho — o que já aconteceu.
+ * Com filemtime, qualquer edição no style.css invalida o cache sozinha.
  */
 function docemate_enqueue_styles() {
+	$css = get_stylesheet_directory() . '/style.css';
+
 	wp_enqueue_style(
 		'docemate-style',
 		get_stylesheet_uri(),
 		array( 'storefront-style' ),
-		wp_get_theme()->get( 'Version' )
+		file_exists( $css ) ? filemtime( $css ) : wp_get_theme()->get( 'Version' )
 	);
 }
 add_action( 'wp_enqueue_scripts', 'docemate_enqueue_styles', 20 );
@@ -162,6 +169,37 @@ function docemate_link_guia_tamanhos() {
 	echo '</a></p>';
 }
 add_action( 'woocommerce_before_variations_form', 'docemate_link_guia_tamanhos' );
+
+/**
+ * Ícones de traço usados na home.
+ *
+ * Desenhados aqui em vez de vir de uma biblioteca de fontes: são quatro
+ * ícones, e carregar uma fonte inteira de ícones para isso pesaria mais que
+ * a página toda.
+ *
+ * @param string $nome Identificador do ícone.
+ * @return string SVG pronto para imprimir.
+ */
+function docemate_icone( $nome ) {
+	$formas = array(
+		// Sacola: retirada na loja.
+		'sacola' => '<path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+		// Setas em ciclo: troca.
+		'troca'  => '<path d="M4 10a8 8 0 0 1 13-4l3 2"/><path d="M20 6v4h-4"/><path d="M20 14a8 8 0 0 1-13 4l-3-2"/><path d="M4 18v-4h4"/>',
+		// Raio: PIX, pagamento instantâneo.
+		'raio'   => '<path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z"/>',
+		// Caminhão: frete.
+		'frete'  => '<path d="M2 7h11v9H2V7Z"/><path d="M13 10h4l3 3v3h-7v-6Z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',
+	);
+
+	if ( empty( $formas[ $nome ] ) ) {
+		return '';
+	}
+
+	return '<svg class="dm-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+		. 'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" '
+		. 'aria-hidden="true" focusable="false">' . $formas[ $nome ] . '</svg>';
+}
 
 /**
  * Monta o link de WhatsApp a partir do número em dados-loja.conf.
