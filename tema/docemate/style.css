@@ -419,6 +419,195 @@ ul.products li.product .button:hover {
 .dm-rodape-legal__politicas li { margin: 0; }
 
 /* ==========================================================================
+   PÁGINA INICIAL
+
+   As seções de vitrine se escondem sozinhas enquanto não houver produto
+   (ver front-page.php), então o que sobra precisa se sustentar de pé.
+   ========================================================================== */
+
+.dm-home > .site-main > * + * {
+  margin-top: 4em;
+}
+
+/* Abertura */
+
+.dm-hero {
+  background-color: var(--dm-brand-soft);
+  border-radius: 8px;
+  padding: 3.5em 2em;
+  text-align: center;
+}
+
+.dm-hero__eyebrow {
+  color: var(--dm-brand);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+}
+
+.dm-hero__titulo {
+  font-size: 2.4em;
+  line-height: 1.15;
+  max-width: 16em;
+  margin: 0 auto 0.5em;
+  text-wrap: balance;
+}
+
+.dm-hero__texto {
+  font-size: 1.1em;
+  max-width: 34em;
+  margin: 0 auto 2em;
+}
+
+.dm-hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75em;
+  margin: 0;
+}
+
+/* Botão secundário: vazado, para não competir com a ação principal */
+.woocommerce a.button.dm-botao-vazado,
+a.button.dm-botao-vazado {
+  background-color: transparent;
+  color: var(--dm-brand);
+  border: 1px solid var(--dm-brand);
+}
+
+.woocommerce a.button.dm-botao-vazado:hover,
+a.button.dm-botao-vazado:hover {
+  background-color: var(--dm-brand);
+  color: #FFFFFF;
+}
+
+/* O que a loja garante */
+
+.dm-garantias {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1px;
+  background-color: var(--dm-line);
+  border: 1px solid var(--dm-line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.dm-garantias li {
+  background-color: var(--dm-bg);
+  padding: 1.4em 1.3em;
+  margin: 0;
+  font-size: 0.92em;
+  line-height: 1.5;
+  color: var(--dm-muted);
+}
+
+.dm-garantias strong {
+  display: block;
+  color: var(--dm-ink);
+  font-weight: 600;
+  margin-bottom: 0.25em;
+}
+
+/* Seções com título */
+
+.dm-secao__titulo,
+.dm-sobre__titulo,
+.dm-ajuda__titulo {
+  font-size: 1.6em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+/* Categorias */
+
+.dm-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1.5em;
+}
+
+.dm-categoria {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.dm-categoria__foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.7em;
+  transition: opacity 0.15s ease;
+}
+
+/* Sem foto de categoria, um bloco na cor da marca em vez de espaço em branco */
+.dm-categoria__foto--vazia {
+  background-color: var(--dm-brand-soft);
+  border: 1px dashed var(--dm-line);
+}
+
+.dm-categoria:hover .dm-categoria__foto { opacity: 0.85; }
+
+.dm-categoria__nome {
+  color: var(--dm-ink);
+  font-weight: 600;
+  font-size: 0.98em;
+}
+
+.dm-categoria:hover .dm-categoria__nome { color: var(--dm-brand); }
+
+/* A loja */
+
+.dm-sobre {
+  background-color: var(--dm-bg-soft);
+  border-radius: 8px;
+  padding: 2.75em 2em;
+  text-align: center;
+}
+
+.dm-sobre p {
+  max-width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dm-link-seta {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.dm-link-seta::after {
+  content: " \2192";
+  transition: margin-left 0.15s ease;
+  display: inline-block;
+}
+
+.dm-link-seta:hover::after { margin-left: 0.25em; }
+
+/* Dúvida de tamanho */
+
+.dm-ajuda {
+  text-align: center;
+  border: 1px solid var(--dm-line);
+  border-radius: 8px;
+  padding: 2.5em 2em;
+}
+
+.dm-ajuda p {
+  max-width: 34em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
    WIDGETS E BARRA LATERAL
    ========================================================================== */
 
@@ -469,6 +658,30 @@ ul.products li.product .button:hover {
     flex-direction: column;
     gap: 0.6em;
   }
+
+  /* Home no celular */
+  .dm-home > .site-main > * + * { margin-top: 2.5em; }
+
+  .dm-hero {
+    padding: 2.5em 1.25em;
+    border-radius: 6px;
+  }
+
+  .dm-hero__titulo { font-size: 1.75em; }
+  .dm-hero__texto { font-size: 1em; }
+
+  /* Botões empilhados e de largura cheia: alvo de toque decente */
+  .dm-hero__acoes { flex-direction: column; }
+  .dm-hero__acoes .button { width: 100%; }
+
+  .dm-secao__titulo,
+  .dm-sobre__titulo,
+  .dm-ajuda__titulo { font-size: 1.35em; }
+
+  .dm-categorias { grid-template-columns: repeat(2, 1fr); gap: 1em; }
+
+  .dm-sobre,
+  .dm-ajuda { padding: 2em 1.25em; }
 }
 
 /* Respeita quem pediu menos animação no sistema */

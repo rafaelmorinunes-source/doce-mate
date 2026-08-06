@@ -164,6 +164,103 @@ function docemate_link_guia_tamanhos() {
 add_action( 'woocommerce_before_variations_form', 'docemate_link_guia_tamanhos' );
 
 /**
+ * Monta o link de WhatsApp a partir do número em dados-loja.conf.
+ *
+ * @return string URL do wa.me, ou string vazia se não houver número.
+ */
+function docemate_link_whatsapp() {
+	$d = docemate_dados_loja();
+
+	if ( empty( $d['whatsapp'] ) ) {
+		return '';
+	}
+
+	$digitos = preg_replace( '/\D/', '', $d['whatsapp'] );
+
+	if ( strlen( $digitos ) < 10 ) {
+		return '';
+	}
+
+	// Acrescenta o código do Brasil se o número veio só com DDD.
+	if ( strlen( $digitos ) <= 11 ) {
+		$digitos = '55' . $digitos;
+	}
+
+	return 'https://wa.me/' . $digitos;
+}
+
+/**
+ * Diz se a loja já tem algum produto publicado.
+ *
+ * @param array $args Filtros extras para wc_get_products().
+ * @return bool
+ */
+function docemate_tem_produtos( $args = array() ) {
+	if ( ! function_exists( 'wc_get_products' ) ) {
+		return false;
+	}
+
+	$produtos = wc_get_products(
+		array_merge(
+			array(
+				'status' => 'publish',
+				'limit'  => 1,
+				'return' => 'ids',
+			),
+			$args
+		)
+	);
+
+	return ! empty( $produtos );
+}
+
+/**
+ * Categorias de produto para a home.
+ *
+ * Enquanto a loja não tem nenhum produto, mostra todas as categorias — assim dá
+ * para conferir a estrutura durante a montagem. Depois que houver produto,
+ * passa a mostrar só as categorias que têm peça, para ninguém clicar e cair
+ * numa página vazia.
+ *
+ * @return array
+ */
+function docemate_categorias_destaque() {
+	if ( ! taxonomy_exists( 'product_cat' ) ) {
+		return array();
+	}
+
+	$categorias = get_terms(
+		array(
+			'taxonomy'   => 'product_cat',
+			'parent'     => 0,
+			'hide_empty' => docemate_tem_produtos(),
+			'exclude'    => array( get_option( 'default_product_cat' ) ),
+			'number'     => 6,
+		)
+	);
+
+	return is_wp_error( $categorias ) ? array() : $categorias;
+}
+
+/**
+ * Imprime uma seção de vitrine, ou nada se não houver o que mostrar.
+ *
+ * @param string $titulo     Título da seção.
+ * @param string $shortcode  Shortcode do WooCommerce que lista os produtos.
+ * @param bool   $mostrar    Se falso, a seção inteira é omitida.
+ */
+function docemate_secao_produtos( $titulo, $shortcode, $mostrar ) {
+	if ( ! $mostrar ) {
+		return;
+	}
+
+	echo '<section class="dm-secao">';
+	echo '<h2 class="dm-secao__titulo">' . esc_html( $titulo ) . '</h2>';
+	echo do_shortcode( $shortcode );
+	echo '</section>';
+}
+
+/**
  * Storefront mostra "Página inicial" nas migalhas de pão. "Início" é mais curto
  * e não quebra a linha no celular.
  */
