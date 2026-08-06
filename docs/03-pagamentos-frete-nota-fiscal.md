@@ -5,6 +5,62 @@ e emitir documento. Nenhuma das três pode ficar para depois.
 
 ---
 
+## 3.0 Antes de tudo: checkout clássico, não em blocos
+
+O WooCommerce hoje tem **dois checkouts diferentes**, e instalações novas vêm
+com o **checkout em blocos** ligado por padrão. Para loja brasileira, isso
+precisa ser trocado antes de configurar qualquer outra coisa.
+
+### O problema
+
+O plugin **Brazilian Market on WooCommerce** — que adiciona CPF, CNPJ, bairro
+e máscara de CEP — **não funciona no checkout em blocos**. Sem ele, o checkout
+do WooCommerce é americano: não tem campo de CPF e não tem bairro.
+
+Isso não é questão de estética. Sem CPF você **não consegue emitir nota
+fiscal**, e sem bairro o endereço sai incompleto para a transportadora. São
+dois bloqueios legais e operacionais, não inconveniências.
+
+### O trade-off, honestamente
+
+O checkout em blocos é mais moderno e há relatos de conversão melhor. A
+contrapartida é que boa parte do ecossistema brasileiro — campos fiscais,
+integrações de frete, emissores de NF-e — ainda assume o checkout clássico.
+
+Para uma loja fazendo as primeiras vendas, **quebrar a emissão de nota para
+perseguir conversão é troca ruim**. Comece no clássico. Dá para migrar depois,
+quando os plugins brasileiros tiverem acompanhado.
+
+> O Mercado Pago funciona nos dois. Quem força a decisão é o plugin de campos
+> brasileiros, não o de pagamento.
+
+### Como trocar
+
+1. **Páginas → Finalizar compra**, abrir para edição
+2. Selecionar o bloco *Finalizar compra* e, na barra de ferramentas do bloco,
+   usar a opção de **voltar ao checkout clássico**
+3. Se a opção não aparecer, apague o bloco e coloque no lugar um bloco de
+   *código curto* com: `[woocommerce_checkout]`
+4. Repetir na página **Carrinho**, com `[woocommerce_cart]`
+5. Atualizar as duas páginas
+
+Faça essa troca **antes** de instalar o Brazilian Market e antes de configurar
+frete e pagamento. Trocar depois obriga a refazer testes.
+
+### Como conferir que deu certo
+
+Depois de instalar o Brazilian Market, abra o checkout com um produto no
+carrinho. Devem aparecer:
+
+- Seletor **Pessoa Física / Pessoa Jurídica**
+- Campo **CPF** (ou CNPJ)
+- Campo **Bairro**
+- CEP com máscara e preenchimento automático do endereço
+
+Se algum desses faltar, você ainda está no checkout em blocos.
+
+---
+
 ## 3.1 Pagamentos — Mercado Pago
 
 ### Por que Mercado Pago

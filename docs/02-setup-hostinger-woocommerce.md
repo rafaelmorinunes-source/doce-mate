@@ -195,6 +195,11 @@ O **Brazilian Market on WooCommerce** é indispensável: o checkout padrão do
 WooCommerce é americano, sem campo de CPF e sem bairro. Sem ele, você não
 consegue emitir nota fiscal nem gerar etiqueta de frete corretamente.
 
+> **Antes de instalá-lo**, troque o checkout em blocos pelo clássico — o
+> plugin não funciona no checkout novo, que vem ligado por padrão em
+> instalações recentes. Instruções na
+> [seção 3.0](03-pagamentos-frete-nota-fiscal.md#30-antes-de-tudo-checkout-clássico-não-em-blocos).
+
 Cada plugin extra consome recurso do plano Premium. Resista à tentação de
 instalar "só para testar".
 
