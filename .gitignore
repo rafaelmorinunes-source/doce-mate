@@ -1,5 +1,9 @@
-# Documentos jurídicos gerados por juridico/preencher.py.
-# A fonte da verdade é dados-da-loja.conf + os modelos.
+# Gerados a partir de juridico/dados-da-loja.conf.
+# A fonte da verdade é o .conf mais os modelos — nunca estes arquivos.
 juridico/publicar/
+tema/docemate/dados-loja.php
+
+# Pacote do tema, gerado por tema/build.sh
+tema/docemate.zip
 
 .DS_Store

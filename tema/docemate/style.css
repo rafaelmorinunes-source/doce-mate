@@ -1,0 +1,459 @@
+/*
+Theme Name:   Doce Mate
+Theme URI:    https://docemate.com.br
+Description:  Tema filho do Storefront para a Doce Mate — moda infantil, Porto Alegre/RS.
+Author:       Doce Mate
+Template:     storefront
+Version:      1.0.0
+Text Domain:  docemate
+*/
+
+/* ==========================================================================
+   PALETA — é aqui que você mexe
+
+   Estes valores são um ponto de partida, não a identidade da Doce Mate.
+   Troque pelos tons reais da marca (os mesmos das fotos do Instagram) e o
+   site inteiro acompanha: botões, links, preços, rodapé, tudo.
+
+   Para pegar a cor exata de uma foto: abra a imagem no Paint ou no Preview,
+   use o conta-gotas, copie o código hexadecimal.
+   ========================================================================== */
+
+:root {
+  /* Cor principal da marca — botões, links, destaques */
+  --dm-brand:       #C86B7D;
+  --dm-brand-dark:  #A85062;   /* hover: uns 15% mais escuro que a principal */
+  --dm-brand-soft:  #FBF0F2;   /* fundo suave: a principal bem clareada */
+
+  /* Textos */
+  --dm-ink:         #2E2A2B;   /* títulos */
+  --dm-body:        #5A5153;   /* corpo */
+  --dm-muted:       #8C8285;   /* legendas, metadados */
+
+  /* Fundos e linhas */
+  --dm-bg:          #FFFFFF;
+  --dm-bg-soft:     #FAF7F5;
+  --dm-line:        #EAE4E3;
+
+  /* Cores com significado — não mude sem motivo */
+  --dm-sale:        #C2553F;   /* etiqueta de promoção */
+  --dm-success:     #4F7360;   /* "frete grátis", "em estoque" */
+
+  /* Tipografia
+     Fonte do sistema: carrega instantâneo e não faz requisição externa.
+     Numa hospedagem compartilhada isso vale mais que fonte bonita e lenta.
+     Ver tema/README.md se quiser trocar por uma fonte própria depois. */
+  --dm-font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", sans-serif;
+
+  --dm-radius: 4px;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+body,
+button, input, select, textarea,
+.site-header, .widget, .site-footer {
+  font-family: var(--dm-font);
+  color: var(--dm-body);
+}
+
+body {
+  background-color: var(--dm-bg);
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6,
+.entry-title, .product_title {
+  color: var(--dm-ink);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--dm-brand); }
+a:hover { color: var(--dm-brand-dark); }
+
+/* Foco visível — acessibilidade e navegação por teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.button:focus-visible {
+  outline: 2px solid var(--dm-brand);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   CABEÇALHO
+   ========================================================================== */
+
+.site-header {
+  background-color: var(--dm-bg);
+  border-bottom: 1px solid var(--dm-line);
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+.site-header .site-branding img,
+.site-header .custom-logo-link img {
+  max-height: 76px;
+  width: auto;
+}
+
+.site-title a { color: var(--dm-ink); }
+
+.site-description { color: var(--dm-muted); }
+
+/* Navegação */
+.storefront-primary-navigation,
+.main-navigation ul.menu > li > a,
+.main-navigation ul.nav-menu > li > a {
+  background-color: transparent;
+}
+
+.main-navigation ul.menu > li > a,
+.main-navigation ul.nav-menu > li > a {
+  color: var(--dm-ink);
+  font-weight: 500;
+  font-size: 0.95em;
+  padding: 0.75em 1.1em;
+}
+
+.main-navigation ul.menu > li > a:hover,
+.main-navigation ul.nav-menu > li > a:hover,
+.main-navigation ul.menu > li.current-menu-item > a {
+  color: var(--dm-brand);
+}
+
+/* Carrinho no topo */
+.site-header-cart .cart-contents { color: var(--dm-ink); }
+.site-header-cart .cart-contents:hover { color: var(--dm-brand); }
+.site-header-cart .count { color: var(--dm-muted); }
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+
+button, input[type="button"], input[type="submit"],
+.button, .added_to_cart,
+.woocommerce #respond input#submit,
+.woocommerce a.button, .woocommerce button.button,
+.woocommerce input.button {
+  background-color: var(--dm-brand);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--dm-radius);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.85em 1.5em;
+  transition: background-color 0.15s ease;
+}
+
+button:hover, input[type="button"]:hover, input[type="submit"]:hover,
+.button:hover, .added_to_cart:hover,
+.woocommerce #respond input#submit:hover,
+.woocommerce a.button:hover, .woocommerce button.button:hover,
+.woocommerce input.button:hover {
+  background-color: var(--dm-brand-dark);
+  color: #FFFFFF;
+}
+
+/* Botão principal do checkout e "adicionar ao carrinho" da página do produto */
+.woocommerce button.button.alt,
+.woocommerce a.button.alt,
+.woocommerce input.button.alt,
+.woocommerce #respond input#submit.alt {
+  background-color: var(--dm-brand);
+  color: #FFFFFF;
+}
+
+.woocommerce button.button.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce input.button.alt:hover {
+  background-color: var(--dm-brand-dark);
+}
+
+/* Campos de formulário */
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="password"], input[type="number"], input[type="search"],
+textarea, select, .select2-container .select2-selection--single {
+  border: 1px solid var(--dm-line);
+  border-radius: var(--dm-radius);
+  background-color: var(--dm-bg);
+  box-shadow: none;
+  padding: 0.7em 0.9em;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--dm-brand);
+}
+
+/* ==========================================================================
+   VITRINE DE PRODUTOS
+   ========================================================================== */
+
+ul.products li.product {
+  text-align: left;
+}
+
+ul.products li.product .woocommerce-LoopProduct-link img {
+  border-radius: var(--dm-radius);
+  margin-bottom: 0.9em;
+  transition: opacity 0.2s ease;
+}
+
+ul.products li.product:hover .woocommerce-LoopProduct-link img {
+  opacity: 0.88;
+}
+
+ul.products li.product .woocommerce-loop-product__title {
+  color: var(--dm-ink);
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1.4;
+  padding-bottom: 0.35em;
+}
+
+/* Preço — tabular-nums alinha os dígitos entre os cards */
+ul.products li.product .price,
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  color: var(--dm-ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Preço antigo, quando há promoção */
+.price del {
+  color: var(--dm-muted);
+  font-weight: 400;
+  opacity: 1;
+}
+
+.price ins {
+  color: var(--dm-sale);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Etiqueta de promoção */
+.woocommerce span.onsale {
+  background-color: var(--dm-sale);
+  color: #FFFFFF;
+  border-radius: var(--dm-radius);
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  min-height: auto;
+  min-width: auto;
+  line-height: 1;
+  padding: 0.55em 0.8em;
+  top: 0.75em;
+  left: 0.75em;
+  right: auto;
+}
+
+/* Botão de comprar na vitrine — discreto, para a foto ser a protagonista */
+ul.products li.product .button {
+  background-color: transparent;
+  color: var(--dm-brand);
+  border: 1px solid var(--dm-line);
+  padding: 0.6em 1.1em;
+  font-size: 0.88em;
+}
+
+ul.products li.product .button:hover {
+  background-color: var(--dm-brand);
+  border-color: var(--dm-brand);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   PÁGINA DO PRODUTO
+   ========================================================================== */
+
+.woocommerce div.product .product_title {
+  font-size: 1.9em;
+  margin-bottom: 0.3em;
+}
+
+.woocommerce div.product p.price {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+  font-weight: 600;
+  color: var(--dm-body);
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
+  color: var(--dm-brand);
+}
+
+/* Seletores de tamanho e cor — precisam ser óbvios em loja de roupa */
+.woocommerce div.product form.cart .variations label {
+  font-weight: 600;
+  color: var(--dm-ink);
+}
+
+.woocommerce div.product form.cart .variations select {
+  min-height: 3em;
+  font-size: 1em;
+}
+
+/* Aviso de estoque */
+.stock.in-stock { color: var(--dm-success); font-weight: 500; }
+.stock.out-of-stock { color: var(--dm-sale); font-weight: 500; }
+
+/* ==========================================================================
+   AVISOS E MENSAGENS
+   ========================================================================== */
+
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+  border-top-color: var(--dm-brand);
+  background-color: var(--dm-bg-soft);
+  border-radius: var(--dm-radius);
+}
+
+.woocommerce-message::before,
+.woocommerce-info::before { color: var(--dm-brand); }
+
+.woocommerce-error { border-top-color: var(--dm-sale); }
+.woocommerce-error::before { color: var(--dm-sale); }
+
+/* ==========================================================================
+   MIGALHAS DE PÃO
+   ========================================================================== */
+
+.woocommerce-breadcrumb {
+  color: var(--dm-muted);
+  font-size: 0.88em;
+  padding: 1em 0;
+}
+
+.woocommerce-breadcrumb a { color: var(--dm-muted); }
+.woocommerce-breadcrumb a:hover { color: var(--dm-brand); }
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--dm-bg-soft);
+  color: var(--dm-body);
+  border-top: 1px solid var(--dm-line);
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+
+.site-footer a { color: var(--dm-body); }
+.site-footer a:hover { color: var(--dm-brand); }
+
+.site-footer h1, .site-footer h2, .site-footer h3,
+.site-footer .widget-title {
+  color: var(--dm-ink);
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+}
+
+/* Bloco legal do rodapé — gerado por functions.php.
+   O Decreto 7.962/2013 exige razão social, CNPJ, endereço e contato
+   visíveis em todas as páginas. Não remova. */
+
+.dm-rodape-legal {
+  border-top: 1px solid var(--dm-line);
+  margin-top: 2.5em;
+  padding-top: 1.75em;
+  font-size: 0.84em;
+  line-height: 1.8;
+  color: var(--dm-muted);
+}
+
+.dm-rodape-legal__marca {
+  color: var(--dm-ink);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4em;
+}
+
+.dm-rodape-legal__politicas {
+  list-style: none;
+  margin: 1.1em 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 1.5em;
+}
+
+.dm-rodape-legal__politicas li { margin: 0; }
+
+/* ==========================================================================
+   WIDGETS E BARRA LATERAL
+   ========================================================================== */
+
+.widget-area .widget a { color: var(--dm-body); }
+.widget-area .widget a:hover { color: var(--dm-brand); }
+
+.widget_price_filter .ui-slider .ui-slider-range,
+.widget_price_filter .ui-slider .ui-slider-handle {
+  background-color: var(--dm-brand);
+}
+
+/* ==========================================================================
+   PAGINAÇÃO
+   ========================================================================== */
+
+.woocommerce nav.woocommerce-pagination ul li a:focus,
+.woocommerce nav.woocommerce-pagination ul li a:hover,
+.woocommerce nav.woocommerce-pagination ul li span.current {
+  background-color: var(--dm-brand);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   CELULAR — 80% do tráfego vem do Instagram, então isto não é detalhe
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .site-header {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  .site-header .site-branding img,
+  .site-header .custom-logo-link img {
+    max-height: 56px;
+  }
+
+  .woocommerce div.product .product_title { font-size: 1.5em; }
+  .woocommerce div.product p.price { font-size: 1.3em; }
+
+  /* Alvos de toque grandes o bastante para o dedo */
+  .woocommerce div.product form.cart .variations select,
+  .woocommerce div.product form.cart .button {
+    min-height: 3em;
+  }
+
+  .dm-rodape-legal__politicas {
+    flex-direction: column;
+    gap: 0.6em;
+  }
+}
+
+/* Respeita quem pediu menos animação no sistema */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

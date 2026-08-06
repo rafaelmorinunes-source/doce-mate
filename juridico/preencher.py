@@ -20,6 +20,21 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parent
 CONFIG = BASE / "dados-da-loja.conf"
 SAIDA = BASE / "publicar"
+TEMA = BASE.parent / "tema" / "docemate"
+
+# Dados que o rodapé do tema precisa. O Decreto 7.962/2013 exige razão social,
+# CNPJ, endereço e contato visíveis em todas as páginas — e eles têm que bater
+# com os das páginas jurídicas, por isso saem da mesma fonte.
+CAMPOS_TEMA = (
+    "RAZAO_SOCIAL",
+    "CNPJ",
+    "ENDERECO",
+    "CEP",
+    "EMAIL",
+    "WHATSAPP",
+    "HORARIO_ATENDIMENTO",
+    "HORARIO_LOJA",
+)
 
 MODELOS = [
     "politica-de-troca-e-devolucao.md",
@@ -92,10 +107,48 @@ def main():
         (SAIDA / nome).write_text(texto, encoding="utf-8")
         print(f"  publicar/{nome}")
 
+    if TEMA.is_dir():
+        gerar_dados_tema(dados)
+        print(f"  tema/docemate/dados-loja.php")
+
     print(f"\n4 documentos prontos em juridico/publicar/, sem lacunas.")
     print("Copie cada um para uma página do WordPress.")
     print("\nAntes de ir ao ar, peça para um advogado revisar.")
     return 0
+
+
+def php_string(valor):
+    """Escapa um valor para virar string PHP entre aspas simples."""
+    return "'" + valor.replace("\\", "\\\\").replace("'", "\\'") + "'"
+
+
+def gerar_dados_tema(dados):
+    """Grava os dados da loja num arquivo PHP que o tema filho lê."""
+    linhas = [
+        "<?php",
+        "/**",
+        " * Dados da Doce Mate usados pelo rodapé do tema.",
+        " *",
+        " * GERADO AUTOMATICAMENTE por juridico/preencher.py — não edite à mão.",
+        " * Para mudar qualquer valor, edite juridico/dados-da-loja.conf e rode",
+        " * o script de novo. Assim o CNPJ do rodapé nunca fica diferente do",
+        " * CNPJ dos Termos de Uso.",
+        " */",
+        "",
+        "defined( 'ABSPATH' ) || exit;",
+        "",
+        "return array(",
+    ]
+
+    largura = max(len(c) for c in CAMPOS_TEMA) + 2
+    for campo in CAMPOS_TEMA:
+        chave = f"'{campo.lower()}'".ljust(largura)
+        linhas.append(f"\t{chave} => {php_string(dados.get(campo, ''))},")
+
+    linhas.append(");")
+    linhas.append("")
+
+    (TEMA / "dados-loja.php").write_text("\n".join(linhas), encoding="utf-8")
 
 
 if __name__ == "__main__":
