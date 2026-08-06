@@ -54,20 +54,22 @@ num momento calmo. Aí o custo de errar é só seu tempo, não um pedido perdido
 4. Repetir na página **Carrinho**, com `[woocommerce_cart]`
 5. Atualizar as duas páginas
 
-Faça essa troca **antes** de instalar o Brazilian Market e antes de configurar
-frete e pagamento. Trocar depois obriga a refazer testes.
+Faça essa troca **antes** de configurar frete e pagamento. Trocar depois
+obriga a refazer todos os testes.
 
 ### Como conferir que deu certo
 
-Depois de instalar o Brazilian Market, abra o checkout com um produto no
-carrinho. Devem aparecer:
+Com o plugin de campos brasileiros instalado, abra o checkout com um produto
+no carrinho. Devem aparecer:
 
 - Seletor **Pessoa Física / Pessoa Jurídica**
 - Campo **CPF** (ou CNPJ)
 - Campo **Bairro**
-- CEP com máscara e preenchimento automático do endereço
+- CEP preenchendo rua, bairro e cidade sozinho
 
-Se algum desses faltar, você ainda está no checkout em blocos.
+Faltando algum, o problema é o plugin de campos — não o modo de checkout, já
+que o da Link Nacional funciona nos dois. Confira se ele está ativo e se os
+campos não foram desmarcados nas configurações dele.
 
 ---
 
